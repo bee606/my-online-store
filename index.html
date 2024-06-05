@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Order Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .product div {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #fff;
+            margin: 10px;
+            flex: 1 1 calc(45% - 20px);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .product button {
+            background: #77b300;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background: #333;
+        }
+        .qr-code {
+            text-align: center;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            .product div {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Online Store</h1>
+    </header>
+    <div class="container">
+        <div class="product">
+            <div>
+                <h3>Product 1</h3>
+                <p>Price: $50</p>
+                <button onclick="generateQRCode('Product 1', 50)">Buy Now</button>
+            </div>
+            <div>
+                <h3>Product 2</h3>
+                <p>Price: $30</p>
+                <button onclick="generateQRCode('Product 2', 30)">Buy Now</button>
+            </div>
+        </div>
+        <div class="qr-code" id="qr-code">
+            <!-- QR code will be displayed here -->
+        </div>
+    </div>
+    <script>
+        function generateQRCode(product, price) {
+            const qrCodeDiv = document.getElementById('qr-code');
+            const weChatQRCode = 'wechat-qrcode.png'; // Your WeChat QR code image path
+            
+            qrCodeDiv.innerHTML = `
+                <h3>Scan to Pay for ${product} - $${price}</h3>
+                <img src="${weChatQRCode}" alt="WeChat QR Code" width="200">
+            `;
+        }
+    </script>
+</body>
+</html>
